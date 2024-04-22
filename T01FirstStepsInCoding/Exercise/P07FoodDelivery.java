@@ -4,18 +4,33 @@ import java.util.Scanner;
 
 public class P07FoodDelivery {
     public static void main(String[] args) {
+        // 1. Reading the input
         Scanner scanner = new Scanner(System.in);
+        int chickenMenus = Integer.parseInt(scanner.nextLine());
+        int fishMenus = Integer.parseInt(scanner.nextLine());
+        int vegetarianMenus = Integer.parseInt(scanner.nextLine());
 
-        //Меню без десерт = пилешко меню * 10.35 + рибно меню * 12.40 + веган меню * 8.15
-        //десерт = 0.2 * меню без десерт
-        //Сметка = Меню без десерт + десер + 2.50
+        // 2. Calculating the main menu and then the dessert
+        double mainFoodSum = chickenMenus * 10.35 + fishMenus * 12.40 + vegetarianMenus * 8.15;
+        double dessertSum = mainFoodSum * 0.2;
 
-        int chickenMenu = Integer.parseInt(scanner.nextLine());
-        int fishMenu = Integer.parseInt(scanner.nextLine());
-        int veganMenu = Integer.parseInt(scanner.nextLine());
-        double menuWithoutDessert = chickenMenu * 10.35 + fishMenu * 12.40 + veganMenu * 8.15;
-        double dessert = menuWithoutDessert * 0.2;
-        double totalCosts = menuWithoutDessert + dessert + 2.50;
-        System.out.println(totalCosts);
+        // 3. Adding the dessert and the delivery to the main menu
+        double delivery = 2.50;
+        double check = mainFoodSum + dessertSum + delivery;
+
+        // 4. Printing
+        System.out.println(check);
     }
 }
+
+/*
+Prices:
+
+chicken - 10.35
+fish - 12.40
+vegetarian - 8.15
+
+dessert - 20 & of all costs but without the delivery
+delivery - 2.50;
+
+ */

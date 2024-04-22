@@ -11,7 +11,7 @@ public class P08PetShop {
         double costsDogFood = numberPackageDogFood * 2.50;
         int costsCatFood = numberPackageCatFood * 4;
         double allCosts = costsDogFood + costsCatFood;
-        // "{крайната сума} lv."
+        // "{the final sum} lv."
         System.out.println(allCosts + " lv.");
     }
 }

@@ -9,7 +9,7 @@ public class P07ProjectCreation {
         String nameArchitect = scanner.nextLine();
         int numberProjects = Integer.parseInt(scanner.nextLine());
         int hours = numberProjects * 3;
-        //"The architect {името на архитекта} will need {необходими часове} hours to complete {брой на проектите} project/s."
+        //"The architect {the name of the architect} will need {needed hours} hours to complete {projects number} project/s."
         System.out.println("The architect " + nameArchitect + " will need " + hours + " hours to complete " + numberProjects + " project/s.");
     }
 }

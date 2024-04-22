@@ -4,26 +4,34 @@ import java.util.Scanner;
 
 public class P06Repainting {
     public static void main(String[] args) {
+        // 1. Reading the input
         Scanner scanner = new Scanner(System.in);
-
-        //количество найлон2 = количество найлон + 2
-        //количество боя2 = 1.1 * количество боя
-        //Разходи за материали = количество найлон2 * 1.50 + количество боя2 * 14.50 + количество разредител за боя * 5.00
-        // + 0.40
-        //Разходи за боядисване за 1 час = 0.3 * разходи за материали
-        //Разходи за боядисване = Разходи за боядисване за 1 час * часовете
-        //Общо разходи = разходи за боядисване + разходи за материали
-
         int nylon = Integer.parseInt(scanner.nextLine());
         int paint = Integer.parseInt(scanner.nextLine());
         int thinner = Integer.parseInt(scanner.nextLine());
         int hours = Integer.parseInt(scanner.nextLine());
-        int nylon2 = nylon + 2;
-        double paint2 = 1.1 * paint;
-        double costsForMaterials = nylon2 * 1.50 + paint2 * 14.50 + thinner * 5 + 0.4;
-        double costsForPaintingFor1Hour = costsForMaterials * 0.3;
-        double totalCostsForPainting = costsForPaintingFor1Hour * hours;
-        double totalCosts = totalCostsForPainting + costsForMaterials;
-        System.out.println(totalCosts);
+
+        // 2. Calculating allMaterialsCosts
+        double nylenQuantity = nylon + 2;
+        double painQuantity = 1.1 * paint;
+        double bags = 0.40;
+
+        double materialCosts = (nylenQuantity * 1.50) + (painQuantity * 14.50) + (thinner * 5.00) + bags;
+
+        // 3. Finding workCosts and add it to the material costs
+        double oneHourCost = materialCosts * 0.30;
+        double workCosts = oneHourCost * hours;
+        double allCosts = materialCosts + workCosts;
+
+        // 4. Result Printing
+        System.out.println(allCosts);
     }
 }
+
+// nylon - 1.50
+// paint - 14.50
+// thinner - 5.00
+
+// + 10 % paint + 2 meters nylon + 0.40 bags
+
+// 1 hour work force = 0.30 * materialCosts

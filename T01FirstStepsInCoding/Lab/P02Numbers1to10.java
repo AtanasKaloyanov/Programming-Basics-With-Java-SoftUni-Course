@@ -2,7 +2,6 @@ package T01FirstStepsInCoding.Lab;
 
 public class P02Numbers1to10 {
     public static void main(String[] args) {
-
         System.out.println(1);
         System.out.println(2);
         System.out.println(3);
@@ -13,5 +12,9 @@ public class P02Numbers1to10 {
         System.out.println(8);
         System.out.println(9);
         System.out.println(10);
+
+//        for (int i = 1; i <= 10 ; i++) {
+//            System.out.println(i);
+//        }
     }
 }

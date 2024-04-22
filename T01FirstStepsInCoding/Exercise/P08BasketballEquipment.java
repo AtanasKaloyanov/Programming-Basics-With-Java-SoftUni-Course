@@ -4,25 +4,25 @@ import java.util.Scanner;
 
 public class P08BasketballEquipment {
     public static void main(String[] args) {
+        // 1. Input Reading
         Scanner scanner = new Scanner(System.in);
+        int tax = Integer.parseInt(scanner.nextLine());
 
-        //Баскетболни кецове – цената им е 40% по-малка от таксата за една година
-        //Баскетболен екип – цената му е 20% по-евтина от тази на кецовете
-        //Баскетболна топка – цената ѝ е 1 / 4 от цената на баскетболния екип
-        //Баскетболни аксесоари – цената им е 1 / 5 от цената на баскетболната топка
+        // 2. Finding the 4 different costs
+        double trainers = 0.60 * tax;
+        double equipment = 0.80 * trainers;
+        double ball = 0.25 * equipment;
+        double accessories = 0.20 * ball;
 
-        //Баскетболни кецове =  Цена на тренировка - 0.4 * Цена за тренировка = 219
-        //Баскетболен екип = Цена на кецовете - 0.2 * Цена на кецовете = 175.2
-        //Баскетболна топка = Баскетболен екип * 0.25
-        //Баскетболни аксесоари = Баскетболна топка * 0.2
-        //Всички разходи = Цена на тренировка + Баскетболни кецове + Баскетболен екип + Баскетболна топка + Баскетболни аксесоари
+        // 3. The sum is calculated with adding of the tax to other costs
+        double sum = trainers + equipment + ball + accessories + tax;
 
-        int training = Integer.parseInt(scanner.nextLine());
-        double shoes = training - 0.4 * training;
-        double jersey = shoes - 0.2 * shoes;
-        double ball = jersey * 0.25;
-        double accessories = ball * 0.2;
-        double totalCosts = training + shoes + jersey + ball + accessories;
-        System.out.println(totalCosts);
+        // 4. Result printing
+        System.out.println(sum);
     }
+
+    // trainers - 60 % of the tax
+    // equipment - 80 % of the sum of the trainers
+    // ball - 25 % of the equipment
+    // accessories - 20 % of the ball
 }
