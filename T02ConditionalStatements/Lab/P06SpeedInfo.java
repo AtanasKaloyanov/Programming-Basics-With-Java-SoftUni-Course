@@ -4,20 +4,25 @@ import java.util.Scanner;
 
 public class P06SpeedInfo {
     public static void main(String[] args) {
+        // 1. Reading the input
         Scanner scanner = new Scanner(System.in);
+        double number = Double.parseDouble(scanner.nextLine());
 
-        double a = Double.parseDouble(scanner.nextLine());
-
-        if (a <= 10) {
-            System.out.println("slow");
-        }else if (a <= 50) {
-            System.out.println("average");
-        }else if (a <= 150) {
-            System.out.println("fast");
-        }else if (a <= 1000) {
-            System.out.println("ultra fast");
-        }else if (a > 1000) {
-            System.out.println("extremely fast");
+        // 2. Assigning of the output. There are 5 options
+        String output;
+        if (number <= 10) {
+            output = "slow";
+        } else if (number <= 50) {
+            output = "average";
+        } else if (number <= 150) {
+            output = "fast";
+        } else if (number <= 1000) {
+            output = "ultra fast";
+        }  else {
+            output = "extremely fast";
         }
+
+        // 3. Printing
+        System.out.println(output);
     }
 }

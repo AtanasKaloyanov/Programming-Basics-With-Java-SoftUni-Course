@@ -1,8 +1,8 @@
-package T02ConditionalStatements.Exercise;
+package T02ConditionalStatements.Exercise2;
 
 import java.util.Scanner;
 
-public class P02BonusPoints {
+public class P02 {
     public static void main(String[] args) {
         // 1. Input reading
         Scanner scanner = new Scanner(System.in);
@@ -20,7 +20,9 @@ public class P02BonusPoints {
 
         if (number % 2 == 0) {
             bonus += 1;
-        } else if (number % 10 == 5) {
+        }
+
+        if (number % 10 == 5) {
             bonus += 2;
         }
 

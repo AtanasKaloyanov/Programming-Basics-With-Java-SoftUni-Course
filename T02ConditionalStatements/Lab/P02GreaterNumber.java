@@ -4,14 +4,12 @@ import java.util.Scanner;
 
 public class P02GreaterNumber {
     public static void main(String[] args) {
+        // 1. Reading the input
         Scanner scanner = new Scanner(System.in);
+        int first = Integer.parseInt(scanner.nextLine());
+        int second = Integer.parseInt(scanner.nextLine());
 
-        int a = Integer.parseInt(scanner.nextLine());
-        int b = Integer.parseInt(scanner.nextLine());
-        if (a > b) {
-            System.out.println(a);
-        } else {
-            System.out.println(b);
-        }
+        // 2. Printing the greater number
+        System.out.println(Math.max(first, second));
     }
 }

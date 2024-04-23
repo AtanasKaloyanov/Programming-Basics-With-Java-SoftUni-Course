@@ -1,8 +1,8 @@
-package T02ConditionalStatements.Exercise;
+package T02ConditionalStatements.Exercise2;
 
 import java.util.Scanner;
 
-public class P04ToyShop {
+public class P04 {
     public static void main(String[] args) {
         // 1. Input Reading
         Scanner scanner = new Scanner(System.in);
@@ -31,5 +31,6 @@ public class P04ToyShop {
             double neededMoney = excursion - sum;
             System.out.printf("Not enough money! %.2f lv needed.", neededMoney);
         }
+
     }
 }

@@ -1,8 +1,8 @@
-package T02ConditionalStatements.Exercise;
+package T02ConditionalStatements.Exercise2;
 
 import java.util.Scanner;
 
-public class P06WorldSwimmingRecord {
+public class P06 {
     public static void main(String[] args) {
         // 1. Input Reading
         Scanner scanner = new Scanner(System.in);

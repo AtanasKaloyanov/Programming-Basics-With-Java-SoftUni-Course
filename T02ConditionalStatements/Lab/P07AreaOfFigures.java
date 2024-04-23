@@ -1,33 +1,31 @@
 package T02ConditionalStatements.Lab;
-
 import java.util.Scanner;
 
 public class P07AreaOfFigures {
     public static void main(String[] args) {
+        // 1. Reading the input
         Scanner scanner = new Scanner(System.in);
+        String figureName = scanner.nextLine();
 
-        String figure = scanner.nextLine();
-        double area = 0.00;
-
-        if (figure.equals("square")) {
+        // 2. Assigning of the output - 4 options
+        double area = 0;
+        if (figureName.equals("square")) {
             double a = Double.parseDouble(scanner.nextLine());
-            area = a * a * 1.00;
-
-        } else if (figure.equals("rectangle")) {
+            area = a * a;
+        } else if (figureName.equals("rectangle")) {
             double a = Double.parseDouble(scanner.nextLine());
             double b = Double.parseDouble(scanner.nextLine());
-            area = a * b * 1.00 ;
-
-        } else if (figure.equals("circle")) {
+            area = a * b;
+        } else if (figureName.equals("circle")) {
             double r = Double.parseDouble(scanner.nextLine());
-            area = r * r * Math.PI;
-
-        } else if (figure.equals("triangle")) {
+            area = Math.PI * r * r;
+        } else if (figureName.equals("triangle")) {
             double a = Double.parseDouble(scanner.nextLine());
-            double h = Double.parseDouble(scanner.nextLine());
-            area = a * h / 2 * 1.00;
-
+            double ha = Double.parseDouble(scanner.nextLine());
+            area = (a * ha) / 2;
         }
+
+        // 3. Printing
         System.out.printf("%.3f", area);
     }
 }
