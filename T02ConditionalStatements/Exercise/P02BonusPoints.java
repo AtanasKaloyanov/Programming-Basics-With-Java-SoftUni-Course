@@ -24,7 +24,7 @@ public class P02BonusPoints {
             bonus += 2;
         }
 
-        // 3 Assining the number because of adding of bonus
+        // 3 Assigning the number because of adding of bonus
         double finalNumber = number;
         finalNumber += bonus;
 
