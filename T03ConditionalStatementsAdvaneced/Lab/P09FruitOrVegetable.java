@@ -4,23 +4,34 @@ import java.util.Scanner;
 
 public class P09FruitOrVegetable {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+            // 1. Input reading
+            Scanner scanner = new Scanner(System.in);
+            String input = scanner.nextLine();
 
-//        Да се напише програма, която чете име на продукт, въведено от потребителя, и проверява дали е плод или зеленчук.
-//•	Плодовете "fruit" са banana, apple, kiwi, cherry, lemon и grapes
-//•	Зеленчуците "vegetable" са tomato, cucumber, pepper и carrot
-//•	Всички останали са "unknown"
-//        Да се изведе "fruit", "vegetable" или "unknown" според въведения продукт.
-//                Примерен вход и изход
-//        вход	    изход		вход	изход		вход	изход		вход	изход
-//        banana	fruit		apple	fruit		tomato	vegetable	water	unknown
+            // 2. Output assignment
+            String output;
+            switch (input) {
+                case "banana":
+                case "apple":
+                case "kiwi":
+                case "cherry":
+                case "lemon":
+                case "grapes":
+                    output = "fruit";
+                    break;
+                case "tomato":
+                case "cucumber":
+                case "pepper":
+                case "carrot":
+                    output = "vegetable";
+                    break;
+                default:
+                    output = "unknown";
+                    break;
+            }
 
-        String product = scanner.nextLine();
-        if (product.equals("banana") || product.equals("apple") || product.equals("kiwi")
-                || product.equals("cherry") || product.equals("lemon") || product.equals("grapes")) {
-            System.out.println("fruit");
-        } else if (product.equals("tomato") || product.equals("cucumber") || product.equals("pepper") || product.equals("carrot")) {
-            System.out.println("vegetable");
-        } else System.out.println("unknown");
+            // 3. Output printing
+            System.out.println(output);
+        }
     }
-}
+

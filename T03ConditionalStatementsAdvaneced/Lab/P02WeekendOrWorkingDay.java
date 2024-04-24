@@ -4,41 +4,30 @@ import java.util.Scanner;
 
 public class P02WeekendOrWorkingDay {
     public static void main(String[] args) {
+       // 1. Input reading
         Scanner scanner = new Scanner(System.in);
-
-//        Напишете програма която, чете ден от седмицата (текст), на английски език - въведен от потребителя.
-//        Ако денят е работен отпечатва на конзолата - "Working day", ако е почивен - "Weekend".
-//        Ако се въведе текст различен от ден от седмицата да се отпечата - "Error".
-//                Примерен вход и изход
-//        Вход	Изход
-//        Monday	Working day
-//
-//        Вход	Изход
-//        Sunday	Weekend
-//
-//        Вход	Изход
-//        April	Error
-
         String dayOfWeek = scanner.nextLine();
 
+        // 2. Output assignment
+        String output;
         switch (dayOfWeek) {
             case "Monday":
             case "Tuesday":
             case "Wednesday":
             case "Thursday":
             case "Friday":
-                System.out.println("Working day");
+                output = "Working day";
                 break;
             case "Saturday":
-            case "Sunday" :
-                System.out.println("Weekend");
+            case "Sunday":
+                output = "Weekend";
                 break;
             default:
-                System.out.println("Error");
-            break;
-
-
+                output = "Error";
+                break;
         }
 
+        // 3. Output printing
+        System.out.println(output);
     }
 }

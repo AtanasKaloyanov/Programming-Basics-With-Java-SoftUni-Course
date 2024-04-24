@@ -4,44 +4,29 @@ import java.util.Scanner;
 
 public class P04PersonalTitles {
     public static void main(String[] args) {
+        // 1. Input reading
         Scanner scanner = new Scanner(System.in);
-//        Да се напише конзолна програма, която прочита възраст (десетично число) и пол ("m" или "f"),
-//        въведени от потребителя, и отпечатва обръщение измежду следните:
-//•	"Mr." - мъж (пол "m") на 16 или повече години
-//•	"Master" - момче (пол "m") под 16 години
-//•	"Ms." - жена (пол "f") на 16 или повече години
-//•	"Miss" - момиче (пол "f") под 16 години
-//        Примерен вход и изход
-//        вход	изход		вход	изход		вход	изход		вход	изход
-//
-//        12
-//        f	Miss
-//        17
-//        m	Mr.
-//        25
-//        f	Ms.
-//        13.5
-//        m	Master
-
-        double age = Double.parseDouble(scanner.nextLine());
+        double years = Double.parseDouble(scanner.nextLine());
         String gender = scanner.nextLine();
 
+        // 2. Output assignment
+        String output;
         if (gender.equals("m")) {
-            if (age >= 16) {
-                System.out.println("Mr.");
-            } else if (age < 16) {
-                System.out.println("Master");
+            if (years >= 16) {
+                output = "Mr.";
+            } else {
+                output = "Master";
             }
-
-        } else if (gender.equals("f")) {
-            if (age >= 16) {
-                System.out.println("Ms.");
-            }else if (age < 16) {
-                System.out.println("Miss");
+        } else {
+            if (years >= 16) {
+                output = "Ms.";
+            } else {
+                output = "Miss";
             }
-
         }
-    }
 
+        // 3. Output printing
+        System.out.println(output);
+    }
 }
 

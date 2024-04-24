@@ -4,34 +4,27 @@ import java.util.Scanner;
 
 public class P03AnimalType {
     public static void main(String[] args) {
+        // 1. Input reading
         Scanner scanner = new Scanner(System.in);
-
-//      Напишете програма, която отпечатва класа на животното според неговото име,
-//      въведено от потребителя.
-//•	dog -> mammal
-//•	crocodile, tortoise, snake -> reptile
-//•	others -> unknown
-//        Примерен вход и изход
-//        Вход	Изход
-//        dog	mammal
-//        snake	reptile
-//        cat	unknown
-
         String animal = scanner.nextLine();
 
+        // 2. Output assignment
+        String output;
         switch (animal) {
             case "dog":
-                System.out.println("mammal");
+                output = "mammal";
                 break;
             case "crocodile":
             case "tortoise":
             case "snake":
-                System.out.println("reptile");
+                output = "reptile";
                 break;
             default:
-                System.out.println("unknown");
+                output = "unknown";
                 break;
         }
 
+        // 3. Input printing
+        System.out.println(output);
     }
 }
