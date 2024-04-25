@@ -4,82 +4,58 @@ import java.util.Scanner;
 
 public class P08OnTimeForExam {
     public static void main(String[] args) {
+        // 1. Input reading
         Scanner scanner = new Scanner(System.in);
-
-//        Студент трябва да отиде на изпит в определен час. Той идва в изпитната зала в даден час на пристигане.
-//        Счита се, че студентът е дошъл навреме, ако е пристигнал в часа на изпита или до половин час преди това.
-//        Ако е пристигнал по-рано повече от 30 минути, той е подранил.
-//        Ако е дошъл след часа на изпита, той е закъснял.
-//        Напишете програма, която прочита време на изпит и време на пристигане и отпечатва дали студентът е дошъл навреме,
-//                дали е подранил или е закъснял и с колко часа или минути е подранил или закъснял.
-//
-//                Вход
-//        От конзолата се четат 4 цели числа (по едно на ред), въведени от потребителя:
-//•	Първият ред съдържа час на изпита – цяло число от 0 до 23.
-//•	Вторият ред съдържа минута на изпита – цяло число от 0 до 59.
-//•	Третият ред съдържа час на пристигане – цяло число от 0 до 23.
-//•	Четвъртият ред съдържа минута на пристигане – цяло число от 0 до 59.
-//        Изход
-//        На първият ред отпечатайте:
-//•	“Late”, ако студентът пристига по-късно от часа на изпита.
-//•	“On time”, ако студентът пристига точно в часа на изпита или до 30 минути по-рано.
-//•	“Early”, ако студентът пристига повече от 30 минути преди часа на изпита.
-//                Ако студентът пристига с поне минута разлика от часа на изпита, отпечатайте на следващия ред:
-
         int examHour = Integer.parseInt(scanner.nextLine());
         int examMinutes = Integer.parseInt(scanner.nextLine());
         int arrivalHour = Integer.parseInt(scanner.nextLine());
         int arrivalMinutes = Integer.parseInt(scanner.nextLine());
 
-        int minutesExam = examHour * 60 + examMinutes;
-        int minutesArrival = arrivalHour * 60 + arrivalMinutes;
+        // 2. Computing of the minutes of the exam and of the minutes of the student's arrival
+        int examAllMinutes = examMinutes + examHour * 60;
+        int arrivalAllMinutes = arrivalMinutes + arrivalHour * 60;
 
-        if (minutesArrival > minutesExam && minutesArrival < minutesExam + 60) {
-            int minutesLate = minutesArrival - minutesExam;
-            System.out.println("Late");
-            System.out.printf("%d minutes after the start", minutesLate);
-
-
+        // 3. Printing - multiple cases:
+        String time;
+        int difference = arrivalAllMinutes - examAllMinutes;
+        if (difference > 0) {
+            printTheFirstLineLate();
+            time = "after";
+            printSecondLine(difference, time);
+        } else {
+            difference = Math.abs(difference);
+            printTheFirstLineOnTimeOrEarly(difference);
+            time = "before";
+            printSecondLine(difference, time);
         }
-        if (minutesArrival >= minutesExam + 60) {
-            int minutesLate = minutesArrival - minutesExam;
-            int hourAfterTheStart = minutesLate / 60;
-            int minutesAfterTheStart = minutesLate % 60;
-            if (minutesAfterTheStart < 10) {
-                System.out.println("Late");
-                System.out.printf("%d:0%d hours after the start", hourAfterTheStart, minutesAfterTheStart);}
-                if (minutesAfterTheStart >= 10) {
-                    System.out.println("Late");
-                    System.out.printf("%d:%d hours after the start", hourAfterTheStart, minutesAfterTheStart);
-            }
 
-        }
-        if (minutesArrival == minutesExam) {
+    }
+
+    private static void printTheFirstLineLate() {
+        System.out.println("Late");
+    }
+
+    private static void printTheFirstLineOnTimeOrEarly(int difference) {
+        if (difference <= 30) {
             System.out.println("On time");
-        }
-        if (minutesArrival < minutesExam && minutesArrival >= minutesExam - 30) {
-            int minutesBeforeTheStart = minutesArrival - minutesExam;
-            System.out.println("On time");
-            System.out.printf("%d minutes before the start", Math.abs(minutesBeforeTheStart));
-        }
-        if (minutesArrival < minutesExam - 30 && minutesArrival >= minutesExam - 59) {
-            int minutesBeforeTheStart = minutesArrival - minutesExam;
-
+        } else {
             System.out.println("Early");
-            System.out.printf("%d minutes before the start", Math.abs(minutesBeforeTheStart));
         }
-        if (minutesArrival <= minutesExam - 60) {
-            int minutesBeforeTheStart = minutesExam - minutesArrival;
-            int minutesBeforeTheStart1 = minutesBeforeTheStart % 60;
-            int hoursBeforeTheStart = minutesBeforeTheStart / 60;
-            if (minutesBeforeTheStart1 < 10) {
-                System.out.println("Early");
-                System.out.printf("%d:0%d hours before the start", Math.abs(hoursBeforeTheStart), Math.abs(minutesBeforeTheStart1));
-            } else if (minutesBeforeTheStart1 >= 10) {
-                System.out.println("Early");
-                System.out.printf("%d:%d hours before the start", Math.abs(hoursBeforeTheStart), Math.abs(minutesBeforeTheStart1));
-            }
+    }
 
+    private static void printSecondLine(int difference, String time) {
+        if (difference == 0) {
+        } else if (difference < 60) {
+            System.out.printf("%d minutes %s the start", difference, time);
+        } else {
+            int differenceHours = difference / 60;
+            int differenceMinutes = difference % 60;
+
+            if (differenceMinutes < 10) {
+                System.out.printf("%d:0%d hours %s the start", differenceHours, differenceMinutes, time);
+            } else {
+                System.out.printf("%d:%d hours %s the start", differenceHours, differenceMinutes, time);
+            }
         }
     }
 }
