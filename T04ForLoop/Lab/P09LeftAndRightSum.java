@@ -4,33 +4,30 @@ import java.util.Scanner;
 
 public class P09LeftAndRightSum {
     public static void main(String[] args) {
+        // 1. Input reading
         Scanner scanner = new Scanner(System.in);
-
-//        Да се напише програма, която чете 2 * n-на брой цели числа, подадени от потребителя,
-//        и проверява дали сумата на първите n числа (лява сума) е равна на сумата на вторите n числа (дясна сума).
-//        При равенство печата " Yes, sum = " + сумата; иначе печата " No, diff = " + разликата.
-//                Разликата се изчислява като положително число (по абсолютна стойност).
-
         int n = Integer.parseInt(scanner.nextLine());
-        int firstSum = 0;
-        int secondSum = 0;
 
-        for (int i = 1; i <= n; i++) {
-            int a = Integer.parseInt(scanner.nextLine());
-            firstSum += a;
-        }
-        for (int i = 1; i <= n; i++) {
-            int b = Integer.parseInt(scanner.nextLine());
-            secondSum += b;
-        }
+        // 2. Sums computation
+        int leftSum = getSum(scanner, n);
+        int rightSum = getSum(scanner, n);
 
-        if (firstSum == secondSum) {
-            System.out.printf("Yes, sum = %d", firstSum);
+        // 3. Output printing - 2 cases:
+        if (leftSum == rightSum) {
+            System.out.printf("Yes, sum = %d", leftSum);
         } else {
-            int difference = firstSum - secondSum;
-            System.out.printf("No, diff = %d", Math.abs(difference));
+            int difference = Math.abs(leftSum - rightSum);
+            System.out.printf("No, diff = %d", difference);
         }
+    }
 
+    private static int getSum(Scanner scanner, int n) {
+        int sum = 0;
+        for (int i = 0; i < n; i++) {
+            int number = Integer.parseInt(scanner.nextLine());
+            sum += number;
+        }
+        return sum;
     }
 }
 

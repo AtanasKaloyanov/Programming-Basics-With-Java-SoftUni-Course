@@ -6,37 +6,32 @@ import java.util.Scanner;
 
 public class P10OddEvenSum {
     public static void main(String[] args) {
+        // 1. Input reading
         Scanner scanner = new Scanner(System.in);
-
-//        Да се напише програма, която чете n-на брой цели числа,
-//                подадени от потребителя и проверява дали сумата от числата на четни позиции е
-//        равна на сумата на числата на нечетни позиции.
-//•	Ако сумите са равни да се отпечатат два реда: "Yes" и на нов ред "Sum = " + сумата;
-//•	Ако сумите не са равни да се отпечат два реда: "No" и на нов ред "Diff = " + разликата.
-//                Разликата се изчислява по абсолютна стойност.
-
         int n = Integer.parseInt(scanner.nextLine());
-        int sumEven = 0;
-        int sumOdd = 0;
+
+        // 2. Sum computing
+        int oddSum = 0;
+        int evenSum = 0;
 
         for (int i = 1; i <= n; i++) {
-            int a = Integer.parseInt(scanner.nextLine());
+            int currentNumber = Integer.parseInt(scanner.nextLine());
             if (i % 2 == 0) {
-                sumEven += a;
+                oddSum += currentNumber;
             } else {
-                sumOdd += a;
-
+                evenSum += currentNumber;
             }
-
-        } if (sumEven == sumOdd) {
-            System.out.printf("Yes%n");
-            System.out.printf("Sum = %d", sumEven);
-        } else {
-            int difference = sumEven - sumOdd;
-            System.out.printf("No%n");
-            System.out.printf("Diff = %d", Math.abs(difference));
         }
 
+        // 3. Output printing
+        if (oddSum == evenSum) {
+            System.out.println("Yes");
+            System.out.printf("Sum = %d", oddSum);
+        } else {
+            int difference = Math.abs(oddSum - evenSum);
+            System.out.println("No");
+            System.out.printf("Diff = %d", difference);
+        }
     }
 }
 
