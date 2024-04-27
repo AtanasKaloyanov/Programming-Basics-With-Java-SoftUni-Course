@@ -4,71 +4,39 @@ import java.util.Scanner;
 
 public class P08TennisRanklist {
     public static void main(String[] args) {
+        // 1. Input reading
         Scanner scanner = new Scanner(System.in);
+        int tournamentsNumber = Integer.parseInt(scanner.nextLine());
+        int initialPoints = Integer.parseInt(scanner.nextLine());
 
-//        Григор Димитров е тенисист, чиято следваща цел е изкачването в световната ранглиста по тенис за мъже.
-//                През годината Гришо участва в определен брой турнири, като за всеки турнир получава точки, които зависят от позицията,
-//                на която е завършил в турнира. Има три варианта за завършване на турнир:
-//	W - ако е победител получава 2000 точки
-//	F - ако е финалист получава 1200 точки
-//	SF - ако е полуфиналист получава 720 точки
-//        Напишете програма, която изчислява колко ще са точките на Григор след изиграване на всички турнири,
-//        като знаете с колко точки стартира сезона. Също изчислете колко точки средно печели от всички изиграни турнири
-//        и колко процента от турнирите е спечелил.
-//                Вход
-//        От конзолата първо се четат два реда:
-//•	Брой турнири, в които е участвал – цяло число в интервала [1…20]
-//•	Начален брой точки в ранглистата - цяло число в интервала [1...4000]
-//        За всеки турнир се прочита отделен ред:
-//•	Достигнат етап от турнира – текст – "W", "F" или "SF"
-//        Изход
-//        Отпечатват се три реда в следния формат:
-//•	"Final points: {брой точки след изиграните турнири}"
-//•	"Average points: {средно колко точки печели за турнир}"
-//•	"{процент спечелени турнири}%"
-//        Средните точки да бъдат закръглени към най-близкото цяло число надолу,
-//        а процентът да се форматира до втората цифра след десетичния знак.
+        // 2. All points and winning points computation
+        int allPoints = initialPoints;
+        int firstPlaceCounter = 0;
 
-        int numberOfTourniers = Integer.parseInt(scanner.nextLine());
-        int firstPoints = Integer.parseInt(scanner.nextLine());
-
-        int pointsForWin = 0;
-        int pointsForLose = 0;
-        int pointsForSemifinal = 0;
-
-        int pW = 0;
-
-        for (int i = 1; i <= numberOfTourniers; i++) {
-
-            String etap = scanner.nextLine();
-
-            switch (etap) {
-
+        for (int i = 0; i < tournamentsNumber; i++) {
+            String currentPlace = scanner.nextLine();
+            switch (currentPlace) {
                 case "W":
-                    pointsForWin += 2000;
-                    pW ++;
+                    allPoints += 2000;
+                    firstPlaceCounter++;
                     break;
-
                 case "F":
-                    pointsForLose += 1200;
+                    allPoints += 1200;
                     break;
-
                 case "SF":
-                    pointsForSemifinal += 720;
+                    allPoints += 720;
                     break;
             }
         }
 
-        int finalPoints = firstPoints + pointsForWin +  pointsForLose + pointsForSemifinal;
+        // 3. Average points and percentage of the winning championship computation
+        int winningPoints = allPoints - initialPoints;
+        int averagePoints = (int) Math.floor(winningPoints / tournamentsNumber);
+        double winningPercentage = ( (firstPlaceCounter * 1.00) / tournamentsNumber) * 100;
 
-        System.out.printf("Final points: %d%n", finalPoints);
-
-        double averagePoints = (finalPoints - firstPoints * 1.00) / numberOfTourniers;
-
-        System.out.printf("Average points: %.0f%n", Math.floor(averagePoints));
-
-        System.out.printf("%.2f%%", (pW * 1.00 / numberOfTourniers) * 100);
-
-
+        // 4. Output printing
+        System.out.printf("Final points: %d\n", allPoints);
+        System.out.printf("Average points: %d\n", averagePoints);
+        System.out.printf("%.2f%%", winningPercentage);
     }
 }

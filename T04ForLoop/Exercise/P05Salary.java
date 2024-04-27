@@ -4,55 +4,45 @@ import java.util.Scanner;
 
 public class P05Salary {
     public static void main(String[] args) {
+        // 1. Input reading
         Scanner scanner = new Scanner(System.in);
+        int tagsNumber = Integer.parseInt(scanner.nextLine());
+        int salary = Integer.parseInt(scanner.nextLine());
 
-//        Шеф на компания забелязва че все повече служители прекарват  време в сайтове, които ги разсейват.
-//        За да предотврати това, той въвежда изненадващи проверки на отворените табове на браузъра на служителите си.
-//                Според отворения сайт в таба се налагат следните глоби:
-//	"Facebook" -> 150 лв.
-//	"Instagram" -> 100 лв.
-//	"Reddit" -> 50 лв.
-//                От конзолата се четат два реда:
-//	Брой отворени табове в браузъра n - цяло число в интервала [1...10]
-//	Заплата - число в интервала [500...1500]
-//        След това n – на брой пъти се чете име на уебсайт – текст
-//                Изход
-//	Ако по време на проверката заплатата стане по-малка или равна на 0 лева, на конзолата се изписва
-//        "You have lost your salary." и програмата приключва.
-//        	В противен случай след проверката на конзолата се изписва остатъкът от заплатата (да се изпише като цяло число).
-
-        int n = Integer.parseInt(scanner.nextLine());
-        double salary = Double.parseDouble(scanner.nextLine());
-
-
-
-
-
-        for (int i = 1 ; i <= n ; i++) {
-String site = scanner.nextLine();
-            if (site.equals("Facebook"))
-            {
-               salary = salary - 150;
-
-            }if (site.equals("Instagram")) {
-                salary = salary - 100;
-
-            }if (site.equals("Reddit")) {
-                salary =salary - 50;
-
-            }
-            if  (salary  <= 0) {
-                      break;
-            }
+        // 2. Cycle
+        for (int i = 0; i < tagsNumber; i++) {
+            String currentTag = scanner.nextLine();
+            salary = getSalaryAfterfine(salary, currentTag);
+            if (lostSalaryCondition(salary)) return;
         }
 
+        // 3. Output printing
+        System.out.println(salary);
+    }
 
-
-        if (salary  <= 0) {
+    private static boolean lostSalaryCondition(double salary) {
+        if (salary <= 0) {
             System.out.println("You have lost your salary.");
-        } else {
-
-            System.out.printf("%.0f", salary);;
+            return true;
         }
+        return false;
+    }
+
+    private static int getSalaryAfterfine(int salary, String currentTag) {
+        switch (currentTag) {
+            case "Facebook":
+                salary -= 150;
+                break;
+
+            case "Instagram":
+                salary -= 100;
+                break;
+
+            case "Reddit":
+                salary -= 50;
+                break;
+
+        }
+        return salary;
     }
 }

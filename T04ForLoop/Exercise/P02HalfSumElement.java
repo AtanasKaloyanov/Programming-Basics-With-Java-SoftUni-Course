@@ -4,34 +4,33 @@ import java.util.Scanner;
 
 public class P02HalfSumElement {
     public static void main(String[] args) {
+        // 1. Input reading
         Scanner scanner = new Scanner(System.in);
-
-//        Да се напише програма, която чете n-на брой цели числа, въведени от потребителя,
-//        и проверява дали сред тях съществува число, което е равно на сумата на всички останали.
-//	Ако има такъв елемент печата "Yes" и на нов ред "Sum = "  + неговата стойност
-//	Ако няма такъв елемент печата "No" и на нов ред "Diff = " + разликата между най-големия елемент и сумата на останалите
-//                (по абсолютна стойност)
-
         int n = Integer.parseInt(scanner.nextLine());
+
+        // 2. Sum computation and finding of the greatest element
         int sum = 0;
+        int bestElement = Integer.MIN_VALUE;
 
-        int biggest = Integer.MIN_VALUE;
-
-        for (int i = 1 ; i <= n ; i++) {
-            int a = Integer.parseInt(scanner.nextLine());
-            if (a > biggest) {
-                biggest = a;
+        for (int i = 0; i < n; i++) {
+            int currentNumber = Integer.parseInt(scanner.nextLine());
+            if (currentNumber > bestElement) {
+                bestElement = currentNumber;
             }
-            sum += a;
-
+            sum += currentNumber;
         }
-        if (biggest == sum - biggest) {
-            System.out.printf("Yes%n");
-            System.out.printf("Sum = %d", biggest);
+
+        // 3. Finding the sum without the greatest and
+        int sumWithoutTheBestElement = sum - bestElement;
+
+        // 4. Output printing - 2 cases:
+        if (sumWithoutTheBestElement == bestElement) {
+            System.out.println("Yes");
+            System.out.printf("Sum = %d", sumWithoutTheBestElement);
         } else {
-            int difference = biggest - (sum - biggest);
-            System.out.printf("No%n");
-            System.out.printf("Diff = %d", Math.abs(difference));
+            int restSum = Math.abs(sumWithoutTheBestElement - bestElement);
+            System.out.println("No");
+            System.out.printf("Diff = %d", restSum);
         }
 
     }
