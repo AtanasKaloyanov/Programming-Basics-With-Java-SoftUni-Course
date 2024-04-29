@@ -1,6 +1,6 @@
 package T04ForLoop.MoreExercises;
 
-public class P08Clock {
+public class P09Clock {
     public static void main(String[] args) {
         // Output printing
         for (int i = 0; i <= 23; i++) {
