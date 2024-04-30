@@ -1,48 +1,39 @@
 package T05WhileLoop.Exercise;
 
+import java.math.BigDecimal;
 import java.util.Scanner;
 
 public class P05Coins {
     public static void main(String[] args) {
+        // 1. Input reading
         Scanner scanner = new Scanner(System.in);
+        BigDecimal change = new BigDecimal(scanner.nextLine());
 
-
-
-        double change = Double.parseDouble(scanner.nextLine());
-        double coins = change * 100;
-
-        int count = 0;
-
-        while (coins > 0) {
-            if (coins >= 200) {
-                count++;
-                coins = coins - 200;
-            } else if (coins >= 100) {
-                count++;
-                coins = coins - 100;
-            }else if (coins >= 50) {
-                count++;
-                coins = coins - 50;
-            }else if (coins >= 20) {
-                count++;
-                coins = coins - 20;
-            }else if (coins >= 10) {
-                count++;
-                coins = coins - 10;
-            }else if (coins >= 5) {
-                count++;
-                coins = coins - 5;
-            }else if (coins >= 2) {
-                count++;
-                coins = coins - 2;
-            }else if (coins >= 1) {
-                count++;
-                coins = coins - 1;
+        //  2. Coins counting via while cycle
+        double coinsCounter = 0;
+        while (change.compareTo(BigDecimal.valueOf(0)) != 0) {
+            if (change.compareTo(BigDecimal.valueOf(2)) > -1) {
+                change = change.subtract(BigDecimal.valueOf(2));
+            } else if (change.compareTo(BigDecimal.valueOf(1)) > -1) {
+                change = change.subtract(BigDecimal.valueOf(1));
+            } else if (change.compareTo(BigDecimal.valueOf(0.50)) > -1) {
+                change = change.subtract(BigDecimal.valueOf(0.50));
+            } else if (change.compareTo(BigDecimal.valueOf(0.20)) > -1) {
+                change = change.subtract(BigDecimal.valueOf(0.20));
+            } else if (change.compareTo(BigDecimal.valueOf(0.10)) > -1) {
+                change = change.subtract(BigDecimal.valueOf(0.10));
+            } else if (change.compareTo(BigDecimal.valueOf(0.05)) > -1) {
+                change = change.subtract(BigDecimal.valueOf(0.05));
+            } else if (change.compareTo(BigDecimal.valueOf(0.02)) > -1) {
+                change = change.subtract(BigDecimal.valueOf(0.02));
+            } else if (change.compareTo(BigDecimal.valueOf(0.01)) > -1) {
+                change = change.subtract(BigDecimal.valueOf(0.01));
             }
-            else {
-                break;
-            }
+
+            coinsCounter++;
         }
-        System.out.println(count);
+
+        // 3. Coins printing
+        System.out.printf("%.0f", coinsCounter);
     }
 }

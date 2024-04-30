@@ -4,58 +4,36 @@ import java.util.Scanner;
 
 public class P02ExamPreparation {
     public static void main(String[] args) {
+        // 1. Input reading
         Scanner scanner = new Scanner(System.in);
-        // Напишете програма, в която Марин решава задачи от изпити, докато не получи съобщение "Enough" от лектора си.
-//При всяка решена задача, той получава оценка.
-// Програмата трябва да приключи прочитането на данни при команда "Enough" или ако Марин получи определеният брой незадоволителни оценки.
-//Незадоволителна е всяка оценка, която е по-малка или равна на 4.
-//Вход
-//•	На първи ред - брой незадоволителни оценки - цяло число в интервала [1…5]
-//•	След това многократно се четат по два реда:
-//o	Име на задача - текст
-//o	Оценка - цяло число в интервала [2…6]
-//Изход
-//•	Ако Марин стигне до командата "Enough", отпечатайте на 3 реда:
-//o	"Average score: {средна оценка}"
-//o	"Number of problems: {броя на всички задачи}"
-//o	"Last problem: {името на последната задача}"
-//•	Ако получи определения брой незадоволителни оценки:
-//o	"You need a break, {брой незадоволителни оценки} poor grades."
-//Средната оценка да бъде форматирана до втория знак след десетичната запетая
+        int n = Integer.parseInt(scanner.nextLine());
 
-        int excludedGrades = Integer.parseInt(scanner.nextLine());
+        // 2. 4 variables initialising via while cycle
+        String currentName = "";
+        int badGradesN = 0;
+        double gradesSum = 0;
+        int allGradesCounter = 0;
+        String currentLine = scanner.nextLine();
 
-        int excludedGradesCounter = 0;
-        int gradesCounter = 0;
-        double sum = 0;
-        String lastProblem = "";
-        boolean isFailed = true;
-        while (excludedGradesCounter < excludedGrades) {
-            String task = scanner.nextLine();
-            if (task.equals("Enough")) {
-                isFailed = false;
-                break;
-            }
-
-            int grade = Integer.parseInt(scanner.nextLine());
-
-
-            gradesCounter++;
-
+        while (!currentLine.equals("Enough")) {
+            currentName = currentLine;
+            double grade = Double.parseDouble(scanner.nextLine());
             if (grade <= 4.00) {
-                excludedGradesCounter++;
-
+                badGradesN++;
+                if (badGradesN == n) {
+                    System.out.printf("You need a break, %d poor grades.", badGradesN);
+                    return;
+                }
             }
-            sum = grade + sum;
-            lastProblem = task;
+            gradesSum += grade;
+            allGradesCounter++;
+            currentLine = scanner.nextLine();
+        }
 
-        }
-        if (excludedGradesCounter >= excludedGrades) {
-            System.out.printf("You need a break, %d poor grades.", excludedGradesCounter);
-        } else {
-            System.out.printf("Average score: %.2f%n", sum / gradesCounter);
-            System.out.printf("Number of problems: %d%n", gradesCounter);
-            System.out.printf("Last problem: %s", lastProblem);
-        }
+        // 3. Output printing
+        double averageScore = gradesSum / allGradesCounter;
+        System.out.printf("Average score: %.2f\n", averageScore);
+        System.out.printf("Number of problems: %d\n", allGradesCounter);
+        System.out.printf("Last problem: %s", currentName);
     }
 }
