@@ -4,24 +4,21 @@ import java.util.Scanner;
 
 public class P06MaxNumber {
     public static void main(String[] args) {
+        // 1. Input reading
         Scanner scanner = new Scanner(System.in);
+        String line = scanner.nextLine();
 
-//Напишете програма, която до получаване на командата "Stop", чете цели числа,
-// въведени от потребителя и намира най-голямото измежду тях.
-// Въвежда се по едно число на ред.
-
-        String input = scanner.nextLine();
-        int biggest = Integer.MIN_VALUE;
-
-        while (!input.equals("Stop")) {
-            int number = Integer.parseInt(input);
-
-            if (number > biggest) {
-                biggest = number;
+        // 2. Finding the best number via while cycle
+        int bestNumber = Integer.MIN_VALUE;
+        while (!line.equals("Stop")) {
+            int number = Integer.parseInt(line);
+            if (number > bestNumber) {
+                bestNumber = number;
             }
-
-            input = scanner.nextLine();
+            line = scanner.nextLine();
         }
-        System.out.println(biggest);
+
+        // 3. Output printing
+        System.out.println(bestNumber);
     }
 }

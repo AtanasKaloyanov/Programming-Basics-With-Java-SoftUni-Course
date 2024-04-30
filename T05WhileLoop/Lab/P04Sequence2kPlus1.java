@@ -4,20 +4,13 @@ import java.util.Scanner;
 
 public class P04Sequence2kPlus1 {
     public static void main(String[] args) {
-
-        //Напишете програма, която чете число n, въведено от потребителя,
-        // и отпечатва всички числа ≤ n от редицата: 1, 3, 7, 15, 31, ….
-        //Всяко следващо число се изчислява като умножим предишното с 2 и добавим 1.
-
+        // 1. Input reading
         Scanner scanner = new Scanner(System.in);
+        int number = Integer.parseInt(scanner.nextLine());
 
-        int n = Integer.parseInt(scanner.nextLine());
-        int k = 1;
-
-        while (k <= n) {
-            System.out.println(k);
-            k = 2 * k + 1;
+        // 2. Cycle with step i = i * 2 + 1 and printing
+        for (int i = 1; i <= number; i = i * 2 + 1) {
+            System.out.println(i);
         }
-
     }
 }

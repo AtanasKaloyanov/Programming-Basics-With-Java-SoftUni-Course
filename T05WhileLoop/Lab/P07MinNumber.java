@@ -4,20 +4,21 @@ import java.util.Scanner;
 
 public class P07MinNumber {
     public static void main(String[] args) {
+        // 1. Input reading
         Scanner scanner = new Scanner(System.in);
+        String line = scanner.nextLine();
 
-        String input = scanner.nextLine();
-        int smallest = Integer.MAX_VALUE;
-
-        while (!input.equals("Stop")) {
-            int number = Integer.parseInt(input);
-
-            if (number < smallest) {
-                smallest = number;
+        // 2. Finding the best number via while cycle
+        int smallestNumber = Integer.MAX_VALUE;
+        while (!line.equals("Stop")) {
+            int number = Integer.parseInt(line);
+            if (number < smallestNumber) {
+                smallestNumber = number;
             }
-
-            input = scanner.nextLine();
+            line = scanner.nextLine();
         }
-        System.out.println(smallest);
+
+        // 3. Output printing
+        System.out.println(smallestNumber);
     }
 }

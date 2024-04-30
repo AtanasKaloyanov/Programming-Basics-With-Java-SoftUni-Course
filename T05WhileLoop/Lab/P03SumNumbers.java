@@ -4,21 +4,18 @@ import java.util.Scanner;
 
 public class P03SumNumbers {
     public static void main(String[] args) {
+        // 1. Input reading
         Scanner scanner = new Scanner(System.in);
+        int number = Integer.parseInt(scanner.nextLine());
 
-        //Напишете програма, която чете цяло число от конзолата и на всеки следващ ред цели числа,
-        // докато тяхната сума стане по-голяма или равна на първоначалното число.
-        // След приключване на четенето да се отпечата сумата на въведените числа.
-
-        int firstNumber = Integer.parseInt(scanner.nextLine());
+        // 1. Sum computation via while cycle
         int sum = 0;
-
-
-        while (firstNumber > sum) {
-           int numbers = Integer.parseInt(scanner.nextLine());
-           sum = sum + numbers;
+        while (sum < number) {
+            int currentNumber = Integer.parseInt(scanner.nextLine());
+            sum += currentNumber;
         }
 
+        // 3. Sum printing
         System.out.println(sum);
     }
 }
