@@ -14,6 +14,7 @@ public class P03StreamOfLetters {
         while (!input.equals("End")) {
             char currentChar = input.charAt(0);
             if (!Character.isLetter(currentChar)) {
+                input = scanner.nextLine();
                 continue;
             }
 
@@ -21,12 +22,15 @@ public class P03StreamOfLetters {
                     || (currentChar == 'o' && !password.toString().contains("o"))
                     || (currentChar == 'n' && !password.toString().contains("n"))) {
                 password.append(currentChar);
+
                 if (password.toString().contains("c") && password.toString().contains("o")
                         && password.toString().contains("n")) {
                     System.out.print(word + " ");
                     word.setLength(0);
                     password.setLength(0);
                 }
+
+                input = scanner.nextLine();
                 continue;
             }
 
