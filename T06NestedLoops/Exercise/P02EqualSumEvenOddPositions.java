@@ -4,38 +4,29 @@ import java.util.Scanner;
 
 public class P02EqualSumEvenOddPositions {
     public static void main(String[] args) {
+        // 1. Input reading
         Scanner scanner = new Scanner(System.in);
+        int begin = Integer.parseInt(scanner.nextLine());
+        int end = Integer.parseInt(scanner.nextLine());
 
-        //Напишете програма, която чете от конзолата две шестцифрени цели числа в диапазона от 100000 до 300000.
-        // Винаги първото въведено число ще бъде по малко от второто.
-        // На конзолата да се отпечатат на 1 ред разделени с интервал всички числа, които се намират между двете,
-        // прочетени от конзолата числа и отговарят на следното условие:
-        //•	сумата от цифрите на четни и нечетни позиции да са равни.
-        // Ако няма числа, отговарящи на условието на конзолата не се извежда резултат.
-
-        int firstNumber = Integer.parseInt(scanner.nextLine());
-        int secondNumber = Integer.parseInt(scanner.nextLine());
-
-        for (int i = firstNumber; i <= secondNumber ; i++) {
-
-            String stringNumber = "" + i;
-
+        // 2. Odd and Even sum computation of the numbers between the begin and the end
+        for (int i = begin; i <= end ; i++) {
             int oddSum = 0;
             int evenSum = 0;
-
-            for (int j = 0; j < stringNumber.length(); j++) {
-                int currentNumber = Integer.parseInt("" + stringNumber.charAt(j));
-                if (j % 2 == 0) {
-                    oddSum = currentNumber + oddSum;
+            for (int j = 1; j <= 6; j++) {
+                String numberAsString = String.valueOf(i);
+                char currentChar = numberAsString.charAt(j - 1);
+                int currentCharAsNumber = Integer.parseInt(String.valueOf(currentChar));
+                if (j % 2 != 0) {
+                    oddSum += currentCharAsNumber;
                 } else {
-                    evenSum = currentNumber + evenSum;
+                    evenSum += currentCharAsNumber;
                 }
-
             }
-            if (evenSum == oddSum) {
+
+            if (oddSum == evenSum) {
                 System.out.print(i + " ");
             }
-
         }
     }
 }

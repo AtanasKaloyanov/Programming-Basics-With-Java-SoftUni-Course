@@ -4,43 +4,36 @@ import java.util.Scanner;
 
 public class P04TrainTheTrainers {
     public static void main(String[] args) {
+        // 1. Input reading
         Scanner scanner = new Scanner(System.in);
+        int n = Integer.parseInt(scanner.nextLine());
+        String name = scanner.nextLine();
 
-//Курсът "Train the trainers" е към края си и финалното оценяване наближава. Вашата задача е
-// да помогнете на журито което ще оценява презентациите, като напишете програма в която да изчислява средната оценка от представянето
-// на всяка една презентация от даден студент, а накрая средният успех от всички тях.
-//От конзолата на първият ред се прочита броят на хората в журито n - цяло число в интервала [1…20]
-//След това на отделен ред се прочита името на презентацията - текст
-//За всяка една презентация на нов ред се четат n - на брой оценки - реално число в интервала [2.00…6.00]
-//След изчисляване на средната оценка за конкретна презентация, на конзолата се печата
-// "{името на презентацията} - {средна оценка}."
-//След получаване на команда "Finish" на конзолата се печата "Student's final assessment is {среден успех от всички презентации}."
-// и програмата приключва.
-//Всички оценки трябва да бъдат форматирани до втория знак след десетичната запетая.
+        // 2. allSum computation and counting in while cycle
+        double allSum = 0;
+        int counter = 0;
 
+        while (!name.equals("Finish")) {
+            counter++;
+            double sum = getSum(scanner, n);
 
-        int numberPeople = Integer.parseInt(scanner.nextLine());
-        String input = scanner.nextLine();
-        double sumAvarageGrades = 0;
-        int taskCounter = 0;
-
-        while (!input.equals("Finish")) {
-            String task = input;
-             taskCounter++;
-
-            double sumGrade = 0;
-            for (int i = 1; i <= numberPeople; i++) {
-                double grade = Double.parseDouble(scanner.nextLine());
-                sumGrade = grade + sumGrade;
-
-            }
-            double avarageGrade = sumGrade / numberPeople;
-            sumAvarageGrades = avarageGrade + sumAvarageGrades;
-
-            System.out.printf("%s - %.2f.%n", input, avarageGrade);
-
-            input = scanner.nextLine();
+            double averageGrade = sum / n;
+            System.out.printf("%s - %.2f.\n", name, averageGrade);
+            allSum += sum;
+            name = scanner.nextLine();
         }
-        System.out.printf("Student's final assessment is %.2f.", sumAvarageGrades / taskCounter) ;
+
+        // 3. Average sum computation and output printing:
+        int allGrades = counter * n;
+        double averageSum = allSum / allGrades;
+        System.out.printf("Student's final assessment is %.2f.", averageSum);
+    }
+    private static double getSum(Scanner scanner, int n) {
+        double sum = 0;
+        for (int i = 0; i < n; i++) {
+            double currentGrade = Double.parseDouble(scanner.nextLine());
+            sum += currentGrade;
+        }
+        return sum;
     }
 }
